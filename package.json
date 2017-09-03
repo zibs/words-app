@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "jest-expo": "^20.0.0",
-    "reactotron-react-native": "^1.12.2"
+    "reactotron-react-native": "^1.12.2",
+    "url": "^0.11.0"
   }
 }

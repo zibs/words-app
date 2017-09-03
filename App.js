@@ -5,8 +5,7 @@ import { AppLoading, Asset, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import RootNavigation from './navigation/RootNavigation';
 import Reactotron from 'reactotron-react-native'
-
-Reactotron.configure().useReactNative()
+import './reactotron'
 
 export default class App extends React.Component {
   state = {
@@ -14,7 +13,7 @@ export default class App extends React.Component {
   };
 
   componentWillMount() {
-   Reactotron.connect()
+  //  Reactotron.connect()
     this._loadAssetsAsync();
   }
 
