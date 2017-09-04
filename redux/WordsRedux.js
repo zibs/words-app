@@ -8,7 +8,7 @@ const { Types, Creators } = createActions({
   getWordsSuccess: ['words'],
   getWordsFailure: ['errorMessage'],
 
-  getWordRequest: null,
+  getWordRequest: ['word'],
   getWordSuccess: ['word'],
   getWordFailure: ['errorMessage']
 })
@@ -19,7 +19,9 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  fetching: null
+  fetching: null,
+  words: [],
+  word: {}
 })
 
 /* ------------- Reducers ------------- */

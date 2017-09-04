@@ -35,6 +35,8 @@ const create = (baseURL = 'https://charcuterie.party/') => {
   // way at this level.
   //
   const getRoot = () => api.get('')
+  const getWords = () => api.get('/words')
+  const getWord = word => api.get(`/words/${word.id}`)
   // const getRate = () => api.get('rate_limit')
   // const getUser = (username) => api.get('search/users', {q: username})
 
@@ -53,6 +55,8 @@ const create = (baseURL = 'https://charcuterie.party/') => {
   return {
     // a list of the API functions from step 2
     getRoot,
+    getWords,
+    getWord
     // getRate,
     // getUser
   }

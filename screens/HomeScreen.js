@@ -7,9 +7,11 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button
 } from 'react-native';
 import { WebBrowser } from 'expo';
 import StartupActions from '../redux/StartupRedux'
+import WordActions from '../redux/WordsRedux'
 import {connect} from 'react-redux'
 
 import { MonoText } from '../components/StyledText';
@@ -23,7 +25,10 @@ class HomeScreen extends React.Component {
     this.props.dispatch(StartupActions.startup())
   }
 
+
+
   render() {
+    const {words} =this.props
     return (
       <View style={styles.container}>
         <ScrollView
@@ -58,6 +63,7 @@ class HomeScreen extends React.Component {
             <Text style={styles.getStartedText}>
               Change this text and your app will automatically reload.
             </Text>
+            <Button title={"get Word"} onPress={() => this.props.dispatch(WordActions.getWordRequest(words.words[100]))}/>
           </View>
 
           <View style={styles.helpContainer}>
@@ -211,4 +217,10 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
-export default  connect()(HomeScreen)
+
+const mapStateToProps =(state) => {
+  return {
+    words: state.words
+  }
+}
+export default  connect(mapStateToProps)(HomeScreen)

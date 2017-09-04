@@ -1,4 +1,5 @@
 import { put, select } from 'redux-saga/effects'
+import Actions from '../redux/WordsRedux'
 import { is } from 'ramda'
 
 // exported to make available for tests
@@ -6,8 +7,7 @@ import { is } from 'ramda'
 
 // process STARTUP actions
 const startupSaga = function* startup(action) {
-  if (__DEV__ && console.tron) {
-  }
+  yield put(Actions.getWordsRequest())
 }
 
 export default startupSaga

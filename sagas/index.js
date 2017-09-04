@@ -8,6 +8,8 @@ import { StartupTypes } from '../redux/StartupRedux'
 /* ------------- Sagas ------------- */
 
 import startupSaga from './StartupSaga'
+import getWordsSaga from './GetWordsSaga'
+import getWordSaga from './GetWordSaga'
 
 /* ------------- API ------------- */
 
@@ -22,8 +24,9 @@ const rootGenerator = function* root() {
     [
       // some sagas only receive an action
       takeLatest(StartupTypes.STARTUP, startupSaga),
+      takeLatest(WordsTypes.GET_WORDS_REQUEST, getWordsSaga, api),
+      takeLatest(WordsTypes.GET_WORD_REQUEST, getWordSaga, api)
       // some sagas receive extra parameters in addition to an action
-      // takeLatest(WordsTypes.GET_WORDS_REQUEST, getWordsSaga, api)
       // takeLatest(WordsTypes.GET_WORD_REQUEST, getWordSaga, api)
     ]
   )
