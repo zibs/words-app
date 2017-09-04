@@ -9,13 +9,19 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
+import StartupActions from '../redux/StartupRedux'
+import {connect} from 'react-redux'
 
 import { MonoText } from '../components/StyledText';
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
+
+  componentWillMount() {
+    this.props.dispatch(StartupActions.startup())
+  }
 
   render() {
     return (
@@ -205,3 +211,4 @@ const styles = StyleSheet.create({
     color: '#2e78b7',
   },
 });
+export default  connect()(HomeScreen)

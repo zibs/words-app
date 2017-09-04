@@ -23,6 +23,7 @@ export default TabNavigator(
   },
   {
     navigationOptions: ({ navigation }) => ({
+      tabBarVisible: false,
       tabBarIcon: ({ focused }) => {
         const { routeName } = navigation.state;
         let iconName;
@@ -52,9 +53,7 @@ export default TabNavigator(
         );
       },
     }),
-    tabBarComponent: TabBarBottom,
-    tabBarPosition: 'bottom',
-    animationEnabled: false,
-    swipeEnabled: false,
+    animationEnabled: true,
+    swipeEnabled: true,
   }
 );

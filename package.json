@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "@expo/samples": "^2.0.2",
+    "apisauce": "^0.14.1",
     "expo": "^20.0.0",
+    "ramda": "^0.24.1",
     "react": "16.0.0-alpha.12",
     "react-native": "https://github.com/expo/react-native/archive/sdk-20.0.0.tar.gz",
     "react-navigation": "^1.0.0-beta.12",
@@ -23,8 +25,12 @@
     "seamless-immutable": "^7.1.2"
   },
   "devDependencies": {
+    "babel-preset-react-native": "3.0.2",
     "jest-expo": "^20.0.0",
     "reactotron-react-native": "^1.12.2",
+    "reactotron-redux": "^1.12.2",
+    "reactotron-redux-saga": "^1.12.2",
+    "reduxsauce": "^0.6.0",
     "url": "^0.11.0"
   }
 }
