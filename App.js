@@ -16,7 +16,7 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
-    console.tron.log('reactotron loaded')
+    // console.tron.log('reactotron loaded')
     this._loadAssetsAsync()
   }
 

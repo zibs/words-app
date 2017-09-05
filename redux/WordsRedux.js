@@ -19,7 +19,7 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  fetching: null,
+  fetching: false,
   words: [],
   word: {}
 })
@@ -33,7 +33,7 @@ export const requestWord = (state, action) => state.merge({ fetching: true })
 // successful avatar lookup
 export const successWords = (state, action) => {
   const { words } = action
-  return state.merge({ fetching: false, error: null, words })
+  return state.merge({ fetching: false, error: null, words: words.words, count: words.count })
 }
 export const successWord = (state, action) => {
   const { word } = action
