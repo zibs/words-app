@@ -11,21 +11,21 @@ class RandomWordScreen extends React.Component {
   }
 
   render() {
-    const { randomWord, isRevealed, currentColour } = this.props
+    const { randomWord, isRevealed, currentColour, quiz } = this.props
     return (
-      <Touchable style={styles.container} onPress={this.handlePress}>
+      <Touchable style={styles.container} onPress={this.handlePress} background={Touchable.Ripple(currentColour)} activeOpacity={0.5} underlayColor="red">
         <ScrollView>
           <View
             style={[
               styles.center,
               { marginTop: 44, marginBottom: 64, borderBottomWidth: 3, borderBottomColor: currentColour }
             ]}>
-            <Text style={{ fontWeight: '500', fontSize: 34, flexWrap: 'wrap', flex: 1 }}>
+            <Text style={{ fontWeight: '500', fontSize: 34, flexWrap: 'wrap', flex: 1, marginLeft: 15}}>
               {randomWord.word}
             </Text>
           </View>
           {isRevealed &&
-            <View style={[styles.center]}>
+            <View style={[styles.center, {marginHorizontal: 15}]}>
               <Text style={{ fontSize: 22, flexWrap: 'wrap', flex: 1 }}>
                 {randomWord.definition}
               </Text>

@@ -20,17 +20,17 @@ class WordsScreen extends React.Component {
     const { currentWord, currentColour } = this.props
     const { navigation: { state: { params } } } = this.props
     return (
-      <ScrollView style={styles.container} contentContainerStyle={{ paddingHorizontal: 25 }}>
+      <ScrollView style={styles.container} contentContainerStyle={{}}>
         <View
           style={[
             styles.center,
             { marginTop: 44, marginBottom: 64, borderBottomWidth: 3, borderBottomColor: currentColour }
           ]}>
-          <Text style={{ fontWeight: '500', fontSize: 34, flexWrap: 'wrap', flex: 1 }}>
+          <Text style={{ fontWeight: '500', fontSize: 34, flexWrap: 'wrap', flex: 1, marginHorizontal: 15 }}>
             {currentWord.word || params.id}
           </Text>
         </View>
-        <View style={[styles.center]}>
+        <View style={[styles.center, {marginHorizontal: 15}]}>
           <Text style={{ fontSize: 22, flexWrap: 'wrap', flex: 1 }}>
             {currentWord.definition || params.definition}
           </Text>
@@ -44,8 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 24,
     backgroundColor: '#fff'
-  },
-  center: { justifyContent: 'center', alignItems: 'center' }
+  }
 })
 
 const mapStateToProps = state => {

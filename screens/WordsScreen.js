@@ -39,18 +39,6 @@ class WordsScreen extends React.Component {
     const { listView } = this.props
     return (
       <View style={styles.container}>
-        {/* <SectionList
-          scrollEventThrottle={16}
-          keyboardShouldPersistTaps="always"
-          keyExtractor={(item, index) => `${index}-${item.id}`}
-          stickySectionHeadersEnabled={true}
-          sections={sectionList}
-          renderSectionHeader={this._renderSectionHeader}
-          renderItem={this._renderRow}
-          onRefresh={() => this.props.dispatch(WordActions.getWordsRequest())}
-          refreshing={fetching}
-          initialNumToRender={count}
-        /> */}
         <ListView
           ref={listview => (this.listView = listview)}
           dataSource={this.state.dataSource}
@@ -59,8 +47,6 @@ class WordsScreen extends React.Component {
           stickySectionHeadersEnabled={true}
           scrollEventThrottle={16}
           initialListSize={20}
-          // removeClippedSubviews={false} // @TODO remove with flatlist
-          // enableEmptySections
           pageSize={100}
           scrollRenderAheadDistance={500}
           renderSeparator={(sectionId, rowId) =>
@@ -68,7 +54,7 @@ class WordsScreen extends React.Component {
               key={`${sectionId}-${rowId}`}
               style={{
                 borderBottomWidth: 1,
-                borderBottomColor: 'rgb(184, 184, 184)',
+                borderBottomColor: 'rgb(223, 223, 223)',
                 marginLeft: 15
               }}
             />}
@@ -89,10 +75,19 @@ class WordsScreen extends React.Component {
     )
   }
 
+
+  renderSectionData = (section, sectionId) => {
+    return (
+      <View style={{ height: 64, paddingLeft: 15 }}>
+        <Text style={{ fontSize: 64, fontFamily: "eileen", color: this.props.currentColour }}>
+          {sectionId}
+        </Text>
+      </View>
+    )
+  }
+
   selectWord = word => {
     const { colours, dispatch, navigation } = this.props
-    console.tron.log("colours")
-    console.tron.log(colours)
     let colour = colours[Math.floor(Math.random() * colours.length)]
     dispatch(WordActions.getWordSuccess(word))
     dispatch(WordActions.getWordRequest(word))
@@ -100,35 +95,26 @@ class WordsScreen extends React.Component {
     navigation.navigate('Word', word)
   }
 
-  renderSectionData = (section, sectionId) => {
-    return (
-      <View style={{ height: 44, paddingLeft: 15 }}>
-        <Text style={{ fontSize: 44 }}>
-          {sectionId}
-        </Text>
-      </View>
-    )
-  }
 
-  _renderRow = ({ item }) => {
-    return (
-      <Touchable onPress={() => {}} style={{ flex: 1, height: 44, justifyContent: 'center' }}>
-        <Text>
-          {item.word}
-        </Text>
-      </Touchable>
-    )
-  }
-
-  _renderSectionHeader = ({ section }) => {
-    return (
-      <View style={{ height: 44 }}>
-        <Text style={{ fontSize: 44 }}>
-          {section.key}
-        </Text>
-      </View>
-    )
-  }
+  // _renderRow = ({ item }) => {
+  //   return (
+  //     <Touchable onPress={() => {}} style={{ flex: 1, height: 44, justifyContent: 'center' }}>
+  //       <Text>
+  //         {item.word}
+  //       </Text>
+  //     </Touchable>
+  //   )
+  // }
+  //
+  // _renderSectionHeader = ({ section }) => {
+  //   return (
+  //     <View style={{ height: 44 }}>
+  //       <Text style={{ fontSize: 44 }}>
+  //         {section.key}
+  //       </Text>
+  //     </View>
+  //   )
+  // }
 }
 
 const styles = StyleSheet.create({
@@ -136,88 +122,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 24,
     backgroundColor: '#fff'
-  },
-  developmentModeText: {
-    marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: 'center'
-  },
-  contentContainer: {
-    paddingTop: 30
-  },
-  welcomeContainer: {
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 20
-  },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: 'contain',
-    marginTop: 3,
-    marginLeft: -10
-  },
-  getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50
-  },
-  WordsScreenFilename: {
-    marginVertical: 7
-  },
-  codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)'
-  },
-  codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
-    borderRadius: 3,
-    paddingHorizontal: 4
-  },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center'
-  },
-  tabBarInfoContainer: {
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: 'black',
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center'
-  },
-  navigationFilename: {
-    marginTop: 5
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: 'center'
-  },
-  helpLink: {
-    paddingVertical: 15
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: '#2e78b7'
   }
 })
 
@@ -226,7 +130,8 @@ const mapStateToProps = state => {
     words: state.words,
     listView: R.pathOr({}, ['words', 'words', 'list_view'], state),
     sectionList: R.pathOr([], ['words', 'words', 'section_list'], state),
-    colours: state.static.colours
+    colours: state.static.colours,
+    currentColour: state.static.currentColour
   }
 }
 export default connect(mapStateToProps)(WordsScreen)
