@@ -39,6 +39,7 @@ const create = (baseURL = productionAPI) => {
   const getRoot = () => api.get('')
   const getWords = () => api.get('/words')
   const getWord = word => api.get(`/words/${word.id}`)
+  const getRandom = word => api.get(`/words/random`)
   // const getRate = () => api.get('rate_limit')
   // const getUser = (username) => api.get('search/users', {q: username})
 
@@ -58,7 +59,8 @@ const create = (baseURL = productionAPI) => {
     // a list of the API functions from step 2
     getRoot,
     getWords,
-    getWord
+    getWord,
+    getRandom
     // getRate,
     // getUser
   }

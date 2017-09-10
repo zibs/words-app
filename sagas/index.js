@@ -5,11 +5,13 @@ import API from '../services/api'
 
 import { WordsTypes } from '../redux/WordsRedux'
 import { StartupTypes } from '../redux/StartupRedux'
+import { QuizTypes } from '../redux/QuizRedux'
 /* ------------- Sagas ------------- */
 
 import startupSaga from './StartupSaga'
 import getWordsSaga from './GetWordsSaga'
 import getWordSaga from './GetWordSaga'
+import getRandomWordSaga from './GetRandomWordSaga'
 
 /* ------------- API ------------- */
 
@@ -25,7 +27,9 @@ const rootGenerator = function* root() {
       // some sagas only receive an action
       takeLatest(StartupTypes.STARTUP, startupSaga),
       takeLatest(WordsTypes.GET_WORDS_REQUEST, getWordsSaga, api),
-      takeLatest(WordsTypes.GET_WORD_REQUEST, getWordSaga, api)
+      takeLatest(WordsTypes.GET_WORD_REQUEST, getWordSaga, api),
+      takeLatest(QuizTypes.GET_RANDOM_WORD_REQUEST, getRandomWordSaga, api),
+      takeLatest(QuizTypes.RESET_RANDOM_WORD, getRandomWordSaga, api)
       // some sagas receive extra parameters in addition to an action
       // takeLatest(WordsTypes.GET_WORD_REQUEST, getWordSaga, api)
     ]

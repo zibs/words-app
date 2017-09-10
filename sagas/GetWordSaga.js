@@ -8,7 +8,7 @@ const getWordSaga = function* getWords(api, {word}) {
   if (response.ok) {
     yield put(Actions.getWordSuccess(response.data))
   } else {
-    // notification
+    yield put(Actions.getWordFailure(response.problem))
   }
 }
 export default getWordSaga
