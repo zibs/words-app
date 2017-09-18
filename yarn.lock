@@ -3630,6 +3630,12 @@ react-native-platform-touchable@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/react-native-platform-touchable/-/react-native-platform-touchable-1.1.1.tgz#fde4acc65eea585d28b164d0c3716a42129a68e4"
 
+react-native-progress@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-3.4.0.tgz#c002e6efb2f0b82dd6889510e669c492da2718ac"
+  dependencies:
+    prop-types "^15.5.8"
+
 react-native-safe-module@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-module/-/react-native-safe-module-1.2.0.tgz#a23824ca24edc2901913694a76646475113d570d"
@@ -3809,9 +3815,9 @@ reactotron-core-client@^1.12.2:
     ramda "^0.24.1"
     ramdasauce "^2.0.0"
 
-reactotron-react-native@^1.12.2:
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/reactotron-react-native/-/reactotron-react-native-1.12.2.tgz#5fc7f9d651a39ec91ee2810a7d3e2f49c81e0243"
+reactotron-react-native@^1.12.3:
+  version "1.12.3"
+  resolved "https://registry.yarnpkg.com/reactotron-react-native/-/reactotron-react-native-1.12.3.tgz#5e66c7a12b84e23ad4f236441085da283589e1a2"
   dependencies:
     json-stringify-safe "^5.0.1"
     mitt "^1.1.2"

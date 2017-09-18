@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const productionAPI = true === false ? "https://charcuterie.party/" : "http://192.168.1.69:3000"
+const productionAPI = __DEV__ === false ? 'https://charcuterie.party/' : 'http://192.168.1.69:3000'
 
 const create = (baseURL = productionAPI) => {
   // ------
@@ -19,7 +19,7 @@ const create = (baseURL = productionAPI) => {
       'Cache-Control': 'no-cache'
     },
     // 10 second timeout...
-    timeout: 10000,
+    timeout: 10000
   })
 
   // ------

@@ -8,12 +8,14 @@ import R from 'ramda'
 const getRandomWordSaga = function* getRandomWords(api) {
   // const wordsRedux = yield select(words)
   // let randomIdToFetch = Math.floor(Math.random() * (wordsRedux.words.last_id - wordsRedux.words.first_id) + wordsRedux.words.first_id)
-
+  const {word} = yield select(words)
   const response = yield call(api.getRandom)
   if (response.ok) {
-    let allColours = yield select(colours)
-    let colour = allColours[Math.floor(Math.random() * allColours.length)]
-    yield put(StaticActions.setColor(colour))
+    if (!R.isEmpty(word)) {
+      let allColours = yield select(colours)
+      let colour = allColours[Math.floor(Math.random() * allColours.length)]
+      yield put(StaticActions.setColor(colour))
+    }
     yield put(Actions.getRandomWordSuccess(response.data))
   } else {
     yield put(Actions.getRandomWordFailure(response.problem))

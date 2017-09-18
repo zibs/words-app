@@ -1,9 +1,14 @@
 import React from 'react'
-import { Platform, StatusBar, StyleSheet, View } from 'react-native'
-import { AppLoading, Asset, Font } from 'expo'
+import {
+  Platform,
+  StatusBar,
+  StyleSheet,
+  View,
+  AsyncStorage
+} from "react-native";
+import { AppLoading, Asset, Font, Constants } from "expo";
 import { Ionicons } from '@expo/vector-icons'
 import RootNavigation from './navigation/RootNavigation'
-import Reactotron from 'reactotron-react-native'
 import { Provider } from 'react-redux'
 import './reactotron'
 import createStore from './redux'
@@ -18,6 +23,7 @@ export default class App extends React.Component {
   componentWillMount() {
     // console.tron.log('reactotron loaded')
     this._loadAssetsAsync()
+    this.storeConstants()
   }
 
   render() {
@@ -27,12 +33,20 @@ export default class App extends React.Component {
       return (
         <Provider store={store}>
           <View style={styles.container}>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            {Platform.OS === 'ios' && <StatusBar hidden barStyle="default" />}
             {Platform.OS === 'android' && <View style={styles.statusBarUnderlay} />}
             <RootNavigation />
           </View>
         </Provider>
       )
+    }
+  }
+
+  storeConstants = () => {
+    const thingsToStore = ["sessionId", 'platform', 'deviceYearClass', 'deviceName', 'statusBarHeight']
+    for (var i = 0; i < thingsToStore.length; i++) {
+      key = thingsToStore[i]
+      AsyncStorage.setItem(key, JSON.stringify(Constants[key]));
     }
   }
 

@@ -1,9 +1,9 @@
 {
   "name": "words",
-  "version": "0.0.0",
-  "description": "Hello Expo!",
-  "author": null,
-  "license": "",
+  "version": "1.0.0",
+  "description": "Words App built for a Reactotron talk at React Native Vancouver.",
+  "author": "eli zibin",
+  "license": "MIT",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "test": "node ./node_modules/jest/bin/jest.js --watch"
@@ -19,6 +19,7 @@
     "react": "16.0.0-alpha.12",
     "react-native": "https://github.com/expo/react-native/archive/sdk-20.0.0.tar.gz",
     "react-native-platform-touchable": "^1.1.1",
+    "react-native-progress": "^3.4.0",
     "react-navigation": "^1.0.0-beta.12",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
@@ -28,7 +29,7 @@
   "devDependencies": {
     "babel-preset-react-native": "3.0.2",
     "jest-expo": "^20.0.0",
-    "reactotron-react-native": "^1.12.2",
+    "reactotron-react-native": "^1.12.3",
     "reactotron-redux": "^1.12.2",
     "reactotron-redux-saga": "^1.12.2",
     "reduxsauce": "^0.6.0",

@@ -19,12 +19,14 @@ export default Creators
 export const INITIAL_STATE = Immutable({
   fetching: false,
   randomWord: {},
-  revealed: false
+  taps: 0,
+  revealed: false,
+  startedFetch: null
 })
 
 /* ------------- Reducers ------------- */
 
-export const requestWord = (state, action) => state.merge({ fetching: true })
+export const requestWord = (state, action) => state.merge({ fetching: true, startedFetch: Date.now() })
 // successful avatar lookup
 export const successWord = (state, action) => {
   const { word } = action
@@ -32,7 +34,7 @@ export const successWord = (state, action) => {
 }
 // failed to get the avatar
 export const failure = (state, { errorMessage }) => state.merge({ fetching: false, errorMessage })
-export const reveal = (state, action) => state.merge({ revealed: true })
+export const reveal = (state, action) => state.merge({ revealed: true, taps: state.taps + 1 })
 export const reset = (state, action) => state.merge({ revealed: false, randomWord: {}, fetching: true })
 
 /* ------------- Hookup Reducers To Types ------------- */

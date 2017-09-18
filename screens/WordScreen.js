@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import StartupActions from '../redux/StartupRedux'
 import WordActions from '../redux/WordsRedux'
 import Touchable from 'react-native-platform-touchable'
+import { BlurView } from "expo";
 import R from 'ramda'
 
 class WordsScreen extends React.Component {
@@ -24,14 +25,14 @@ class WordsScreen extends React.Component {
         <View
           style={[
             styles.center,
-            { marginTop: 44, marginBottom: 64, borderBottomWidth: 3, borderBottomColor: currentColour }
+            { marginTop: 44, marginBottom: 64, borderBottomWidth: 10, borderBottomColor: currentColour }
           ]}>
-          <Text style={{ fontWeight: '500', fontSize: 34, flexWrap: 'wrap', flex: 1, marginHorizontal: 15 }}>
+          <Text style={{ fontWeight: '500', fontSize: 54, flexWrap: 'wrap', flex: 1, marginHorizontal: 15 }}>
             {currentWord.word || params.id}
           </Text>
         </View>
         <View style={[styles.center, {marginHorizontal: 15}]}>
-          <Text style={{ fontSize: 22, flexWrap: 'wrap', flex: 1 }}>
+          <Text style={{ fontSize: 24, flexWrap: 'wrap', flex: 1 }}>
             {currentWord.definition || params.definition}
           </Text>
         </View>
