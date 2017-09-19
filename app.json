@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "words",
-    "description": "No description",
+    "description": "A simple words app built for a talk on Reactotron",
     "slug": "words",
     "privacy": "public",
     "sdkVersion": "20.0.0",
